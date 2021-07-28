@@ -88,6 +88,24 @@
 			width: 100%;
 			display: grid;
 			grid: 'content' 1fr / 1fr;
+			position: relative;
+
+			&::after {
+				position: absolute;
+				content: '';
+				@include ab-center();
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(0deg, rgba(255, 255, 255, 0.499872), rgba(255, 255, 255, 0.499872));
+				opacity: 0;
+				z-index: 0;
+				transition: opacity 250ms;
+			}
+
+			&:hover::after {
+				opacity: 1;
+			}
+
 			img {
 				width: 100%;
 				object-fit: cover;
@@ -107,6 +125,7 @@
 				color: white;
 				@include flex(column nowrap, start, start);
 				gap: 0.7rem;
+				z-index: 5;
 
 				h1 {
 					// font-family: Libre Baskerville;
@@ -129,14 +148,11 @@
 	<title>Galleria.</title>
 </svelte:head>
 <svelte:window bind:innerWidth />
-<article class="gallery" in:fade={{duration: 400, delay: 1000}} out:fade={{duration: 400}}>
+<article class="gallery" in:fade={{ duration: 400, delay: 1000 }} out:fade={{ duration: 400 }}>
 	<section class="gallery-column">
 		{#each gallery.filter((item) => item.gridColumn == '1/2') as { images, artist, name, gridColumn }, i}
-			<a
-				class="art-piece"
-				href="/gallery/{returnSlug(name)}"
-				sveltekit:prefetch>
-				<img src="{images.thumbnail}" alt={name} />
+			<a class="art-piece" href="/gallery/{returnSlug(name)}" sveltekit:prefetch>
+				<img src={images.thumbnail} alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>
@@ -147,7 +163,7 @@
 	<section class="gallery-column">
 		{#each gallery.filter((item) => item.gridColumn == '2/3') as { images, artist, name, gridColumn }, i}
 			<a class="art-piece" href="/gallery/{returnSlug(name)}" sveltekit:prefetch>
-				<img src="{images.thumbnail}" alt={name} />
+				<img src={images.thumbnail} alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>
@@ -158,7 +174,7 @@
 	<section class="gallery-column">
 		{#each gallery.filter((item) => item.gridColumn == '3/4') as { images, artist, name, gridColumn }, i}
 			<a class="art-piece" href="/gallery/{returnSlug(name)}" sveltekit:prefetch>
-				<img src="{images.thumbnail}" alt={name} />
+				<img src={images.thumbnail} alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>
@@ -169,7 +185,7 @@
 	<section class="gallery-column">
 		{#each gallery.filter((item) => item.gridColumn == '4/5') as { images, artist, name, gridColumn }, i}
 			<a class="art-piece" href="/gallery/{returnSlug(name)}" sveltekit:prefetch>
-				<img src="{images.thumbnail}" alt={name} />
+				<img src={images.thumbnail} alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>
