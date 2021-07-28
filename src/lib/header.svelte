@@ -36,6 +36,7 @@
 			letter-spacing: 0.257143rem;
             color: v(gray-500);
             transition: color 250ms;
+			text-transform: uppercase;
 		}
 
         a:hover {
