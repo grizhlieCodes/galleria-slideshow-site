@@ -1,0 +1,74 @@
+@mixin flex($flow, $justify, $align) {
+	display: flex;
+
+	@if ($flow == 0) {
+		flex-flow: row nowrap;
+	} @else {
+		flex-flow: $flow;
+	}
+
+	@if ($justify == 0) {
+		justify-content: center;
+	} @else {
+		justify-content: $justify;
+	}
+
+	@if ($align == 0) {
+		align-items: center;
+	} @else {
+		align-items: $align;
+	}
+}
+
+@mixin eflex($flow, $justify, $align) {
+	@if ($flow == 0) {
+		flex-flow: row nowrap;
+	} @else {
+		flex-flow: $flow;
+	}
+	@if ($justify == 0) {
+		justify-content: center;
+	} @else {
+		justify-content: $justify;
+	}
+	@if ($align == 0) {
+		align-items: center;
+	} @else {
+		align-items: $align;
+	}
+}
+
+@function v($var) {
+	@return var(--#{$var});
+}
+
+$mobile: 375;
+$tablet: 768;
+$desktop: 1200;
+
+@function sizer($size) {
+	@return #{$size}px;
+}
+
+@mixin center() {
+	display: grid;
+	place-items: center;
+}
+
+@mixin mq($size) {
+	@if ($size == tablet) {
+		@media screen and (min-width: #{$tablet}px) {
+			@content;
+		}
+	}
+	@if ($size == desktop) {
+		@media screen and (min-width: #{$desktop}px) {
+			@content;
+		}
+	}
+    @if ($size == mobile){
+        @media screen and (max-width: #{$mobile}px){
+            @content;
+        }
+    }
+}

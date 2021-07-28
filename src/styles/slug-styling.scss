@@ -1,0 +1,267 @@
+@import './mixins.scss';
+
+.gallery-item {
+	width: 100%;
+	display: grid;
+    height: auto;
+
+	@include mq(tablet) {
+        max-height: 105.5rem;
+	}
+
+    @include mq(desktop){
+        height: 100%;
+		min-height: 70rem;
+        max-height: 80rem;
+    }
+}
+// Mobile layout
+.gallery-item {
+	grid-template-columns: 1fr;
+	grid-template-rows: auto minmax(5.2rem, min-content) max-content 4.7rem 2rem min-content;
+	//                  1   2      3      4      5    6           7
+
+	@include mq(mobile) {
+	}
+	* {
+		grid-column: 1/2;
+	}
+
+	.work-image-container {
+		grid-row: 1/3;
+	}
+
+	.heading-container {
+		grid-row: 2/4;
+	}
+
+	.artist-img-container {
+		grid-row: 4/6;
+	}
+
+	.description-container {
+		grid-row: 5/7;
+	}
+}
+//End of Mobile Layout
+
+//TABLET LAYOUT ===== TABLET LAYOUT ===== TABLET LAYOUT ===== TABLET LAYOUT =====
+.gallery-item {
+	@include mq(tablet) {
+		grid-template-columns: minmax(24.3rem, 1fr) minmax(24.3rem, 1fr) 3rem 2fr;
+		grid-template-rows: max-content min-content 6.4rem 1fr min-content;
+		//                  1   2      3      4      5    6           7
+
+		.work-image-container {
+			grid-column: 1/3;
+			grid-row: 1/3;
+		}
+
+		.heading-container {
+			grid-column: 2/5;
+			grid-row: 1/2;
+		}
+
+		.artist-img-container {
+			grid-row: 2;
+			grid-column: 4;
+		}
+
+		.description-container {
+			grid-row: 4;
+			grid-column: 1/5;
+		}
+	}
+}
+//End of Tablet Layout
+
+//Desktop Layout
+
+.gallery-item {
+	@include mq(desktop) {
+		max-width: 136rem;
+		grid-template-columns: 40.9rem 6.5rem 3rem minmax(max-content, 2fr) 3fr;
+		grid-template-rows: max-content minmax(min-content, 25.8rem) minmax(6.4rem, min-content) minmax(
+				6.4rem,
+				min-content
+			);
+
+		.work-image-container {
+			grid-column: 1/3;
+			grid-row: 1/4;
+		}
+
+		.heading-container {
+			grid-column: 2/5;
+			grid-row: 1/2;
+		}
+
+		.artist-img-container {
+			grid-column: 4;
+			grid-row: 3 / 5;
+		}
+
+		.description-container {
+			grid-row: 1/4;
+			grid-column: 5;
+		}
+	}
+}
+//End of Desktop Layout
+
+//General styling - all device sizes
+
+.work-image-container {
+	width: 100%;
+    position: relative;
+
+	img {
+        height: 100%;
+		width: 100%;
+		object-fit: fill;
+	}
+    
+	@include mq(tablet) {
+		img {
+			object-fit: cover;
+		}
+	}
+}
+
+.heading-container {
+	height: 100%;
+	background: v(white);
+	padding: 2.4rem 2.4rem 2.4rem 2.4rem;
+	width: max-content;
+	max-width: 28rem;
+    z-index: 5;
+
+	h1 {
+		font-weight: 700;
+		font-size: 2.4rem;
+		line-height: 2.9rem;
+        margin-bottom: 0.8rem;
+	}
+
+	h2 {
+		font-weight: 500;
+		font-size: 1.5rem;
+		line-height: 1.9rem;
+		color: v(gray-500);
+	}
+
+	@include mq(tablet) {
+		width: 100%;
+		padding: 0 0 6.7rem 6.5rem;
+		max-width: 56rem;
+
+		h1 {
+			width: 100%;
+			font-size: 5.6rem;
+			line-height: 6.4rem;
+			margin-bottom: 2.4rem;
+		}
+
+		h2 {
+			line-height: normal;
+		}
+	}
+
+	@include mq(desktop) {
+		background: none;
+		position: relative;
+		&::before {
+			content: '';
+			width: 6.5rem;
+			height: 100%;
+			position: absolute;
+			background: v(white);
+			left: 0;
+			top: 0;
+		}
+	}
+}
+
+.artist-img-container {
+	height: 6.4rem;
+	width: 6.4rem;
+
+	img {
+		width: 100%;
+		object-fit: fill;
+		transition: all 250ms;
+        transform: translate(1.6rem, 0);
+
+		&:hover {
+			object-fit: none;
+			object-position: top;
+		}
+	}
+
+	@include mq(tablet) {
+		height: 12.8rem;
+		width: 12.8rem;
+	}
+}
+
+.description-container {
+	position: relative;
+	padding-top: 7.4rem;
+	@include flex(column nowrap, space-between, start);
+	gap: 6.8rem;
+
+	@include mq(tablet) {
+		gap: 4rem;
+		padding-left: 11.5rem;
+	}
+	@include mq(desktop) {
+		gap: 8.1rem;
+		padding-top: 11.5rem;
+		padding-left: 0;
+	}
+
+	.year {
+		font-weight: 700;
+		font-size: 10rem;
+		line-height: 10rem;
+		color: v(gray-150);
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		right: 0;
+
+		@include mq(tablet) {
+			font-size: 20rem;
+			line-height: 15rem;
+			left: 0;
+			right: unset;
+		}
+		@include mq(desktop) {
+			left: unset;
+			right: 0;
+		}
+	}
+
+	.description {
+		color: v(gray-500);
+		font-weight: 700;
+		font-size: 1.4rem;
+		line-height: 2.8rem;
+
+		@include mq(tablet) {
+			max-width: 45.7rem;
+		}
+		@include mq(desktop) {
+			max-width: 35rem;
+		}
+	}
+
+	.source-link {
+		font-weight: 700;
+		font-size: 0.9rem;
+		line-height: 1.1rem;
+		letter-spacing: 0.192857rem;
+		text-decoration-line: underline;
+		color: v(gray-500);
+	}
+}
