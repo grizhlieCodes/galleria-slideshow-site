@@ -136,7 +136,7 @@
 				class="art-piece"
 				href="/gallery/{returnSlug(name)}"
 				sveltekit:prefetch>
-				<img src="/static{images.thumbnail}" alt={name} />
+				<img src="{images.thumbnail}" alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>
@@ -147,7 +147,7 @@
 	<section class="gallery-column">
 		{#each gallery.filter((item) => item.gridColumn == '2/3') as { images, artist, name, gridColumn }, i}
 			<a class="art-piece" href="/gallery/{returnSlug(name)}" sveltekit:prefetch>
-				<img src="/static{images.thumbnail}" alt={name} />
+				<img src="{images.thumbnail}" alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>
@@ -158,7 +158,7 @@
 	<section class="gallery-column">
 		{#each gallery.filter((item) => item.gridColumn == '3/4') as { images, artist, name, gridColumn }, i}
 			<a class="art-piece" href="/gallery/{returnSlug(name)}" sveltekit:prefetch>
-				<img src="/static{images.thumbnail}" alt={name} />
+				<img src="{images.thumbnail}" alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>
@@ -169,7 +169,7 @@
 	<section class="gallery-column">
 		{#each gallery.filter((item) => item.gridColumn == '4/5') as { images, artist, name, gridColumn }, i}
 			<a class="art-piece" href="/gallery/{returnSlug(name)}" sveltekit:prefetch>
-				<img src="/static{images.thumbnail}" alt={name} />
+				<img src="{images.thumbnail}" alt={name} />
 				<div class="text-container">
 					<h1 class="art-piece-name">{name}</h1>
 					<p class="artist-name">{artist.name}</p>

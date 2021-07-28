@@ -143,8 +143,8 @@
 </script>
 
 <style lang="scss">
-	@import '../../styles/slug-styling';
 	@import '../../styles/mixins';
+	@import '../../styles/slug-styling';
 
 	.view-image-button {
 		background: v(black);
@@ -244,7 +244,7 @@
 		<div class="overlay" on:click={toggleModal} transition:fade={{ duration: 300 }} />
 		<div class="modal-img-container" transition:fly={{ y: 100, duration: 400 }}>
 			<button class="button">close</button>
-			<img src="/static/assets/{slug}/gallery.jpg" alt={name} />
+			<img src="/assets/{slug}/gallery.jpg" alt={name} />
 		</div>
 	</section>
 {/if}
@@ -252,7 +252,7 @@
 <article class="gallery-item">
 	<section class="work-image-container">
 		<img
-			src="../static/assets/{slug}/hero-{imageSize}.jpg"
+			src="/assets/{slug}/hero-{imageSize}.jpg"
 			alt={name}
 			transition:fly={{ x: -100, duration: 1100 }} />
 		<button class="view-image-button" on:click={toggleModal} transition:fade={{ duration: 400 }}>
@@ -275,7 +275,7 @@
 	</section>
 	<section class="artist-img-container">
 		<img
-			src="../static/assets/{slug}/artist.jpg"
+			src="/assets/{slug}/artist.jpg"
 			alt={artistName}
 			transition:fly={{ y: -100, x: 100, duration: 600 }} />
 	</section>

@@ -46,7 +46,7 @@
 
 <header>
 	<a class="logo-container" href="/">
-		<img src="/static/assets/shared/logo.svg" alt="" />
+		<img src="/assets/shared/logo.svg" alt="" />
 	</a>
 	<a href="/gallery/{firstLink}">start slideshow</a>
 </header>
